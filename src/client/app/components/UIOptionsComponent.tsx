@@ -21,6 +21,7 @@ import ReactTooltip from 'react-tooltip';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
+import Modal from './Modal';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
 
@@ -44,6 +45,7 @@ interface UIOptionsState {
 	barDurationDays: number;
 	showSlider: boolean;
 	compareSortingDropdownOpen: boolean;
+	isModalOpen: boolean;
 }
 
 class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptionsState> {
@@ -59,10 +61,13 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		this.handleToggleOptionsVisibility = this.handleToggleOptionsVisibility.bind(this);
 		this.toggleSlider = this.toggleSlider.bind(this);
 		this.toggleDropdown = this.toggleDropdown.bind(this);
+		this.handleToggleAdvancedOptions = this.handleToggleAdvancedOptions.bind(this);
+		this.handleToggleAdvancedOptions = this.handleToggleAdvancedOptions.bind(this);
 		this.state = {
 			barDurationDays: this.props.barDuration.asDays(),
 			showSlider: false,
-			compareSortingDropdownOpen: false
+			compareSortingDropdownOpen: false,
+			isModalOpen: false
 		};
 	}
 
@@ -73,6 +78,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 	}
 
 	public render() {
+		const { isModalOpen } = this.state;
 		const labelStyle: React.CSSProperties = {
 			fontWeight: 'bold',
 			margin: 0
@@ -274,6 +280,32 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 					</Button>
 					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.options' />
 				</div>
+				<div style={divTopPadding}>
+					<Button
+						onClick={this.handleToggleAdvancedOptions}
+						outline
+					>
+						<FormattedMessage id='advanced.options' />
+					</Button>
+					<TooltipMarkerComponent page='home' helpTextId='help.home.show.advanced.options' />
+				</div>
+				<div style={divTopPadding}>
+					<Button
+						onClick={this.handleToggleAdvancedOptions}
+						outline
+					>
+						<FormattedMessage id='Advanced Options' />
+					</Button>
+					<TooltipMarkerComponent page='home' helpTextId='help.home.show.advanced.options' />
+				</div>
+
+				{/* Conditionally render the modal based on the visibility state */}
+				{isModalOpen && (
+					<Modal
+						onClose={this.handleToggleAdvancedOptions}
+						// Pass any necessary props to the modal component
+					/>
+				)}
 			</div>
 		);
 	}
@@ -309,6 +341,13 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 
 	private handleToggleOptionsVisibility() {
 		this.props.toggleOptionsVisibility();
+	}
+
+	private handleToggleAdvancedOptions() {
+		// Toggle the modal visibility state
+		this.setState(prevState => ({
+			isModalOpen: !prevState.isModalOpen
+		}));
 	}
 
 	private toggleSlider() {
