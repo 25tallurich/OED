@@ -6,6 +6,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import LogoComponent from './LogoComponent';
 import MenuModalComponent from './MenuModalComponent';
+import AdvancedOptionsModal from './AdvancedOptionsModal';
 import HeaderButtonsComponent from './HeaderButtonsComponent';
 import { useSelector } from 'react-redux';
 import { State } from '../types/redux/state';
@@ -53,10 +54,14 @@ export default function HeaderComponent() {
 				<div className='col-4 justify-content-end d-lg-none d-flex'>
 					<MenuModalComponent />
 				</div>
+				<div className='col-4 justify-content-end d-lg-none d-flex'>
+					<AdvancedOptionsModal />
+				</div>
 				<div className='col-4 justify-content-end d-lg-flex d-none'>
 					{/* collapse menu if optionsVisibility is false */}
 					{getPage() === '' && !showOptions ?
-						<MenuModalComponent /> :
+						<MenuModalComponent /> : 
+						<AdvancedOptionsModal /> :
 						<HeaderButtonsComponent />
 					}
 				</div>

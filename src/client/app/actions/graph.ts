@@ -77,6 +77,10 @@ export function toggleOptionsVisibility(): t.ToggleOptionsVisibility {
 	return { type: ActionType.ToggleOptionsVisibility };
 }
 
+export function toggleOptionsAdvVisibility(): t.ToggleOptionsAdvVisibility {
+	return { type: ActionType.ToggleOptionsAdvVisibility };
+}
+
 function changeGraphZoom(timeInterval: TimeInterval): t.ChangeGraphZoomAction {
 	return { type: ActionType.ChangeGraphZoom, timeInterval };
 }
@@ -234,7 +238,7 @@ export function changeOptionsFromLink(options: LinkOptions) {
 	/* eslint-disable @typescript-eslint/indent */
 	const dispatchSecond: Array<Thunk | t.ChangeChartToRenderAction | t.ChangeBarStackingAction |
 		t.ChangeGraphZoomAction | t.ChangeCompareSortingOrderAction | t.ToggleOptionsVisibility |
-		m.UpdateSelectedMapAction | t.UpdateLineGraphRate | t.ToggleAreaNormalizationAction |
+		t.ToggleAdvOptionsVisibility | m.UpdateSelectedMapAction | t.UpdateLineGraphRate | t.ToggleAreaNormalizationAction |
 		t.UpdateSelectedAreaUnitAction | t.ToggleShowMinMaxAction> = [];
 	/* eslint-enable @typescript-eslint/indent */
 
@@ -285,6 +289,9 @@ export function changeOptionsFromLink(options: LinkOptions) {
 	}
 	if (options.optionsVisibility != null) {
 		dispatchSecond.push(toggleOptionsVisibility());
+	}
+	if (options.optionsAdvVisibility != null) {
+		dispatchSecond.push(toggleAdvOptionsVisibility());
 	}
 	if (options.mapID) {
 		// TODO here and elsewhere should be IfNeeded but need to check that all state updates are done when edit, etc.
