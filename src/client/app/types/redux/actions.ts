@@ -48,7 +48,7 @@ export enum ActionType {
 	ChangeSliderRange = 'CHANGE_SLIDER_RANGE',
 	ResetRangeSliderStack = 'RESET_RANGE_SLIDER_STACK',
 	ToggleOptionsVisibility = 'TOGGLE_OPTIONS_VISIBILITY',
-	ToggleOptionsAdvVisibility = 'TOGGLE_OPTIONS_ADV_VISIBILITY',
+	ToggleAdvOptionsVisibility = 'TOGGLE_OPTIONS_ADV_VISIBILITY',
 	UpdateComparePeriod = 'UPDATE_COMPARE_PERIOD',
 	ChangeCompareSortingOrder = 'CHANGE_COMPARE_SORTING_ORDER',
 	SetHotlinked = 'SET_HOTLINKED',

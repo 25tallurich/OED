@@ -77,8 +77,8 @@ export function toggleOptionsVisibility(): t.ToggleOptionsVisibility {
 	return { type: ActionType.ToggleOptionsVisibility };
 }
 
-export function toggleOptionsAdvVisibility(): t.ToggleOptionsAdvVisibility {
-	return { type: ActionType.ToggleOptionsAdvVisibility };
+export function toggleOptionsAdvVisibility(): t.ToggleAdvOptionsVisibility {
+	return { type: ActionType.ToggleAdvOptionsVisibility };
 }
 
 function changeGraphZoom(timeInterval: TimeInterval): t.ChangeGraphZoomAction {
@@ -225,6 +225,7 @@ export interface LinkOptions {
 	comparePeriod?: ComparePeriod;
 	compareSortingOrder?: SortingOrder;
 	optionsVisibility?: boolean;
+	optionsAdvVisibility?: boolean;
 	mapID?: number;
 }
 
@@ -291,7 +292,7 @@ export function changeOptionsFromLink(options: LinkOptions) {
 		dispatchSecond.push(toggleOptionsVisibility());
 	}
 	if (options.optionsAdvVisibility != null) {
-		dispatchSecond.push(toggleAdvOptionsVisibility());
+		dispatchSecond.push(toggleOptionsAdvVisibility());
 	}
 	if (options.mapID) {
 		// TODO here and elsewhere should be IfNeeded but need to check that all state updates are done when edit, etc.

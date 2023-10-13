@@ -60,8 +60,7 @@ export default function HeaderComponent() {
 				<div className='col-4 justify-content-end d-lg-flex d-none'>
 					{/* collapse menu if optionsVisibility is false */}
 					{getPage() === '' && !showOptions ?
-						<MenuModalComponent /> : 
-						<AdvancedOptionsModal /> :
+						<MenuModalComponent /> :
 						<HeaderButtonsComponent />
 					}
 				</div>

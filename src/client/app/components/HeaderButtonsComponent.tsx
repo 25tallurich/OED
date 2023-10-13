@@ -71,6 +71,7 @@ export default function HeaderButtonsComponent() {
 	const unsavedChangesState = useSelector((state: State) => state.unsavedWarning.hasUnsavedChanges);
 	// whether to collapse options when on graphs page
 	const optionsVisibility = useSelector((state: State) => state.graph.optionsVisibility);
+	const optionsAdvVisibility = useSelector((state: State) => state.graph.optionsAdvVisibility);
 	// OED version is needed for help redirect
 	const version = useSelector((state: State) => state.version.version);
 	const HELP_URL = BASE_URL + version;
@@ -232,6 +233,11 @@ export default function HeaderButtonsComponent() {
 								style={state.showOptionsStyle}
 								onClick={() => dispatch(toggleOptionsVisibility())}>
 								<FormattedMessage id={optionsVisibility ? 'hide.options' : 'show.options'} />
+							</DropdownItem>
+							<DropdownItem
+								style={state.showOptionsStyle}
+								onClick={() => dispatch(toggleAdvOptionsVisibility())}>
+								<FormattedMessage id={optionsAdvVisibility ? 'hide.adv.options' : 'show.adv.options'} />
 							</DropdownItem>
 							<DropdownItem divider />
 							<DropdownItem

@@ -25,6 +25,7 @@ const defaultState: GraphState = {
 	areaNormalization: false,
 	hotlinked: false,
 	optionsVisibility: true,
+	optionsAdvVisibility: true,
 	lineGraphRate: { label: 'hour', rate: 1 },
 	renderOnce: false,
 	showMinMax: false
@@ -118,6 +119,11 @@ export default function graph(state = defaultState, action: GraphAction) {
 			return {
 				...state,
 				optionsVisibility: !state.optionsVisibility
+			};
+		case ActionType.ToggleAdvOptionsVisibility:
+			return {
+				...state,
+				optionsAdvVisibility: !state.optionsAdvVisibility
 			};
 		case ActionType.UpdateLineGraphRate:
 			return {

@@ -31,6 +31,7 @@ export interface UIOptionsProps {
 	comparePeriod: ComparePeriod;
 	compareSortingOrder: SortingOrder;
 	optionsVisibility: boolean;
+	optionsAdvVisibility: boolean;
 	changeDuration(duration: moment.Duration): Promise<any>;
 	changeBarStacking(): ChangeBarStackingAction;
 	toggleOptionsVisibility(): ToggleOptionsVisibility;
@@ -278,10 +279,10 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 				</div>
 				<div style={divTopPadding}>
 					<Button
-						onClick={this.handleToggleAdvOptions}
+						onClick={this.handleToggleAdvOptionsVisibility}
 						outline
 					>
-						{this.props.optionsVisibility ?
+						{this.props.optionsAdvVisibility ?
 							<FormattedMessage id='hide.adv.options' />
 							:
 							<FormattedMessage id='show.adv.options' />
@@ -326,7 +327,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		this.props.toggleOptionsVisibility();
 	}
 
-	private handleToggleAdvOptions() {
+	private handleToggleAdvOptionsVisibility() {
 		// Toggle the modal visibility state
 		this.props.toggleAdvOptionsVisibility();
 	}
