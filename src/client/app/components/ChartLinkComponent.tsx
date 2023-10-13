@@ -28,6 +28,7 @@ export default class ChartLinkComponent extends React.Component<ChartLinkProps, 
 		super(props);
 		this.toggleLink = this.toggleLink.bind(this);
 		this.handleOptionsVisibility = this.handleOptionsVisibility.bind(this);
+		this.handleAdvOptionsVisibility = this.handleAdvOptionsVisibility.bind(this);
 		this.state = {
 			showLink: false,
 			showSliderRange: false,
@@ -109,6 +110,15 @@ export default class ChartLinkComponent extends React.Component<ChartLinkProps, 
 		this.setState({
 			hideOptionsInLinkedPage: !currState,
 			optionalLink: (currState) ? '' : optionsVisibilityToken
+		});
+	}
+
+	private handleAdvOptionsVisibility() {
+		const currState = this.state.hideOptionsInLinkedPage;
+		const optionsAdvVisibilityToken = '&optionsAdvVisibility=false';
+		this.setState({
+			hideOptionsInLinkedPage: !currState,
+			optionalLink: (currState) ? '' : optionsAdvVisibilityToken
 		});
 	}
 }

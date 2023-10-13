@@ -42,7 +42,7 @@ export default function MenuModalComponent() {
 					<HeaderButtonsComponent />
 					{/* Only render graph options if on the graph page */}
 					{getPage() === '' &&
-						<UIOptionsContainer />
+						<UIOptionsContainer optionsAdvVisibility={showModal} />
 					}
 				</ModalBody>
 			</Modal>

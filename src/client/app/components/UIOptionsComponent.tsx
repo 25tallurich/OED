@@ -288,7 +288,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 							<FormattedMessage id='show.adv.options' />
 						}
 					</Button>
-					<TooltipMarkerComponent page='home' helpTextId='help.home.show.advanced.options' />
+					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
 				</div>
 			</div>
 		);

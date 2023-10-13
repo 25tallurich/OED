@@ -24,6 +24,7 @@ function mapStateToProps(state: State) {
 		compareLoading: state.readings.bar.isFetching,
 		mapLoading: state.maps.isLoading,
 		optionsVisibility: state.graph.optionsVisibility,
+		optionsAdvVisibility: state.graph.optionsAdvVisibility,
 		selectedTimeInterval: state.graph.timeInterval
 	};
 }
