@@ -19,7 +19,7 @@ import getPage from '../utils/getPage';
 export default function HeaderComponent() {
 	const siteTitle = useSelector((state: State) => state.admin.displayTitle);
 	const showOptions = useSelector((state: State) => state.graph.optionsVisibility);
-	const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
+	//const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
 
 	const divStyle = {
 		marginTop: '5px',
@@ -65,13 +65,14 @@ export default function HeaderComponent() {
 						<HeaderButtonsComponent />
 					}
 				</div>
-				<div className='col-4 justify-content-end d-lg-flex d-none'>
-					{/* collapse menu if optionsVisibility is false */}
+				{/* <div className='col-4 justify-content-end d-lg-flex d-none'>
+					{/* collapse menu if optionsVisibility is false
+					<AdvancedOptionsModal/>
 					{getPage() === '' && !showAdvOptions ?
 						<AdvancedOptionsModal /> :
 						<HeaderButtonsComponent />
 					}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

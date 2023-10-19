@@ -21,8 +21,13 @@ import ReactTooltip from 'react-tooltip';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
+// import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
+// import getPage from '../utils/getPage';
+// import { useSelector } from 'react-redux';
+// import { State } from '../types/redux/state';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
+//const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
 
 export interface UIOptionsProps {
 	chartToRender: ChartTypes;
