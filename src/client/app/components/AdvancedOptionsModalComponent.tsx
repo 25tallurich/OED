@@ -42,7 +42,7 @@ export default function AdvancedOptionsModal() {
 					<HeaderButtonsComponent />
 					{/* Only render graph options if on the graph page */}
 					{getPage() === '' &&
-						<UIOptionsContainer optionsAdvVisibility={showModal} />
+						<UIOptionsContainer />
 					}
 				</ModalBody>
 			</Modal>
