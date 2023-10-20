@@ -282,19 +282,31 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 					</Button>
 					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.options' />
 				</div>
-				<div style={divTopPadding}>
-					<Button
-						onClick={this.handleToggleAdvOptionsVisibility}
-						outline
-					>
-						{this.props.optionsAdvVisibility ?
-							<FormattedMessage id='hide.adv.options' />
-							:
-							<FormattedMessage id='show.adv.options' />
+				{this.props.optionsAdvVisibility && (
+					<div>
+						{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
+							<div style={divTopPadding}>
+								<ExportComponent />
+							</div>
 						}
-					</Button>
-					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
-				</div>
+						<div style={divTopPadding}>
+							<ChartLinkContainer />
+						</div>
+						<div style={divTopPadding}>
+							<Button
+								onClick={this.handleToggleAdvOptionsVisibility}
+								outline
+							>
+								{this.props.optionsAdvVisibility ?
+									<FormattedMessage id='hide.adv.options' />
+									:
+									<FormattedMessage id='show.adv.options' />
+								}
+							</Button>
+							<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
+						</div>
+					</div>
+				)}
 			</div>
 		);
 	}

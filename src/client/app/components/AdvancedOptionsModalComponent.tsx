@@ -3,7 +3,7 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as React from 'react';
-import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import UIOptionsContainer from '../containers/UIOptionsContainer';
 import HeaderButtonsComponent from './HeaderButtonsComponent';
 import { FormattedMessage } from 'react-intl';
@@ -30,9 +30,9 @@ export default function AdvancedOptionsModal() {
 
 	return (
 		<div style={inlineStyle}>
-			<Button color='secondary' outline onClick={toggleModal}>
+			{/* <Button color='secondary' outline onClick={toggleModal}>
 				<FormattedMessage id='advOptions' />
-			</Button>
+			</Button> */}
 			<Modal isOpen={showModal} toggle={toggleModal} onOpened={ReactTooltip.rebuild} onClick={() => ReactTooltip.hide()}>
 				<ModalHeader>
 					<FormattedMessage id='advOptions' />

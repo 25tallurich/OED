@@ -15,7 +15,7 @@ const localeData = {
 		"action": "Action",
 		"add.new.meters": "Add new meters",
 		"admin.only": "Admin Only",
-		"advoptions": "Advanced Options",
+		"advOptions": "Advanced Options",
 		"admin.panel": "Admin Panel",
 		"alphabetically": "Alphabetically",
 		"area": "Area",
