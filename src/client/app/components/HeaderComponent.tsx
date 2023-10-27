@@ -56,7 +56,7 @@ export default function HeaderComponent() {
 					<MenuModalComponent />
 				</div>
 				<div className='col-4 justify-content-end d-lg-none d-flex'>
-					<AdvancedOptionsModal />
+					<AdvancedOptionsModal/>
 				</div>
 				<div className='col-4 justify-content-end d-lg-flex d-none'>
 					{/* collapse menu if optionsVisibility is false */}

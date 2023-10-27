@@ -21,6 +21,7 @@ import ReactTooltip from 'react-tooltip';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
+//import React, { useState } from 'react';
 // import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
 // import getPage from '../utils/getPage';
 // import { useSelector } from 'react-redux';
@@ -268,20 +269,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 				<div style={divTopPadding}>
 					<ChartLinkContainer />
 				</div>
-
-				<div style={divTopPadding} className='d-none d-lg-block'>
-					<Button
-						onClick={this.handleToggleOptionsVisibility}
-						outline
-					>
-						{this.props.optionsVisibility ?
-							<FormattedMessage id='hide.options' />
-							:
-							<FormattedMessage id='show.options' />
-						}
-					</Button>
-					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.options' />
-				</div>
 				{this.props.optionsAdvVisibility && (
 					<div>
 						{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
@@ -307,6 +294,19 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 						</div>
 					</div>
 				)}
+				<div style={divTopPadding} className='d-none d-lg-block'>
+					<Button
+						onClick={this.handleToggleOptionsVisibility}
+						outline
+					>
+						{this.props.optionsVisibility ?
+							<FormattedMessage id='hide.options' />
+							:
+							<FormattedMessage id='show.options' />
+						}
+					</Button>
+					<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.options' />
+				</div>
 			</div>
 		);
 	}

@@ -18,7 +18,6 @@ import getPage from '../utils/getPage';
 export default function AdvancedOptionsModal() {
 	const [showModal, setShowModal] = useState(false);
 	const toggleModal = () => { setShowModal(!showModal); }
-
 	const inlineStyle: React.CSSProperties = {
 		display: 'inline',
 		paddingLeft: '5px'
@@ -30,9 +29,6 @@ export default function AdvancedOptionsModal() {
 
 	return (
 		<div style={inlineStyle}>
-			{/* <Button color='secondary' outline onClick={toggleModal}>
-				<FormattedMessage id='advOptions' />
-			</Button> */}
 			<Modal isOpen={showModal} toggle={toggleModal} onOpened={ReactTooltip.rebuild} onClick={() => ReactTooltip.hide()}>
 				<ModalHeader>
 					<FormattedMessage id='advOptions' />
