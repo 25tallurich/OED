@@ -5,7 +5,6 @@
 import * as React from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import UIOptionsContainer from '../containers/UIOptionsContainer';
-import HeaderButtonsComponent from './HeaderButtonsComponent';
 import { FormattedMessage } from 'react-intl';
 import ReactTooltip from 'react-tooltip';
 import { useState } from 'react';
@@ -35,7 +34,6 @@ export default function AdvancedOptionsModal() {
 				</ModalHeader>
 				<ModalBody>
 					<div style={labelStyle}><FormattedMessage id='navigation' /></div>
-					<HeaderButtonsComponent />
 					{/* Only render graph options if on the graph page */}
 					{getPage() === '' &&
 						<UIOptionsContainer />
