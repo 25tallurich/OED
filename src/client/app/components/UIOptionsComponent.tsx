@@ -21,11 +21,7 @@ import ReactTooltip from 'react-tooltip';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
-//import React, { useState } from 'react';
-// import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
-// import getPage from '../utils/getPage';
-// import { useSelector } from 'react-redux';
-// import { State } from '../types/redux/state';
+import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
 //const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
@@ -51,6 +47,7 @@ type UIOptionsPropsWithIntl = UIOptionsProps & WrappedComponentProps;
 interface UIOptionsState {
 	barDurationDays: number;
 	showSlider: boolean;
+	isModalOpen: boolean;
 	compareSortingDropdownOpen: boolean;
 }
 
@@ -71,6 +68,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		this.state = {
 			barDurationDays: this.props.barDuration.asDays(),
 			showSlider: false,
+			isModalOpen: false,
 			compareSortingDropdownOpen: false
 		};
 	}
@@ -79,6 +77,14 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		if (prev.chartToRender !== this.props.chartToRender) {
 			ReactTooltip.rebuild(); // This rebuilds the tooltip so that it detects the marker that disappear because the chart type changes.
 		}
+	}
+
+	public openModal = () => {
+		this.setState({ isModalOpen: true });
+	}
+
+	public closeModal = () => {
+		this.setState({ isModalOpen: false });
 	}
 
 	public render() {
@@ -92,6 +98,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		const zIndexFix: React.CSSProperties = {
 			zIndex: 0
 		};
+
 
 		return (
 			<div>
@@ -269,25 +276,29 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 				<div style={divTopPadding}>
 					<ChartLinkContainer />
 				</div>
+
+
+				<AdvancedOptionsModal isOpen={this.state.isModalOpen} onClose={this.closeModal}>
+					{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
+						<div style={divTopPadding}>
+							<ExportComponent />
+						</div>
+					}
+					<div style={divTopPadding}>
+						<ChartLinkContainer />
+					</div>
+				</AdvancedOptionsModal>
 				{this.props.optionsAdvVisibility && (
 					<div>
-						{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
-							<div style={divTopPadding}>
-								<ExportComponent />
-							</div>
-						}
-						<div style={divTopPadding}>
-							<ChartLinkContainer />
-						</div>
 						<div style={divTopPadding}>
 							<Button
-								onClick={this.handleToggleAdvOptionsVisibility}
+								onClick={this.openModal} // Change the onClick handler to open the modal
 								outline
 							>
 								{this.props.optionsAdvVisibility ?
-									<FormattedMessage id='hide.adv.options' />
-									:
 									<FormattedMessage id='show.adv.options' />
+									:
+									<FormattedMessage id='hide.adv.options' />
 								}
 							</Button>
 							<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
