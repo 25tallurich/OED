@@ -7,11 +7,11 @@ import { FormattedMessage, defineMessages, injectIntl, WrappedComponentProps } f
 import sliderWithoutTooltips, { createSliderWithTooltip } from 'rc-slider';
 import * as moment from 'moment';
 import { Button, ButtonGroup, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import ExportComponent from '../components/ExportComponent';
+//import ExportComponent from '../components/ExportComponent';
 import ChartSelectComponent from './ChartSelectComponent';
 import ChartDataSelectComponent from './ChartDataSelectComponent';
 import { ChangeBarStackingAction, ChangeCompareSortingOrderAction, ToggleOptionsVisibility, ToggleAdvOptionsVisibility } from '../types/redux/graph';
-import ChartLinkContainer from '../containers/ChartLinkContainer';
+//import ChartLinkContainer from '../containers/ChartLinkContainer';
 import { ChartTypes } from '../types/redux/graph';
 import { ComparePeriod, SortingOrder } from '../utils/calculateCompare';
 import TooltipMarkerComponent from './TooltipMarkerComponent';
@@ -21,13 +21,8 @@ import ReactTooltip from 'react-tooltip';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
-//import React, { useState } from 'react';
-// import getPage from '../utils/getPage';
-// import { useSelector } from 'react-redux';
-// import { State } from '../types/redux/state';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
-//const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
 
 export interface UIOptionsProps {
 	chartToRender: ChartTypes;
@@ -268,31 +263,21 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 				<div style={divTopPadding}>
 					<ChartLinkContainer />
 				</div> */}
-				{this.props.optionsAdvVisibility && (
-					<div>
-						{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
-							<div style={divTopPadding}>
-								<ExportComponent />
-							</div>
-						}
-						<div style={divTopPadding}>
-							<ChartLinkContainer />
-						</div>
-						<div style={divTopPadding}>
-							<Button
-								onClick={this.handleToggleAdvOptionsVisibility}
-								outline
-							>
-								{this.props.optionsAdvVisibility ?
-									<FormattedMessage id='hide.adv.options' />
-									:
-									<FormattedMessage id='show.adv.options' />
-								}
-							</Button>
-							<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
-						</div>
+				<div>
+					<div style={divTopPadding}>
+						<Button
+							onClick={this.handleToggleAdvOptionsVisibility}
+							outline
+						>
+							{this.props.optionsAdvVisibility ?
+								<FormattedMessage id='show.adv.options' />
+								:
+								<FormattedMessage id='hide.adv.options' />
+							}
+						</Button>
+						<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
 					</div>
-				)}
+				</div>
 				<div style={divTopPadding} className='d-none d-lg-block'>
 					<Button
 						onClick={this.handleToggleOptionsVisibility}

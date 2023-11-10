@@ -237,7 +237,7 @@ export default function HeaderButtonsComponent() {
 							<DropdownItem
 								style={state.showOptionsStyle}
 								onClick={() => dispatch(toggleOptionsAdvVisibility())}>
-								<FormattedMessage id={optionsAdvVisibility ? 'hide.adv.options' : 'show.adv.options'} />
+								<FormattedMessage id={optionsAdvVisibility ? 'show.adv.options' : 'hide.adv.options'} />
 							</DropdownItem>
 							<DropdownItem divider />
 							<DropdownItem
