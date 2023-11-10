@@ -22,7 +22,6 @@ import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
 //import React, { useState } from 'react';
-// import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
 // import getPage from '../utils/getPage';
 // import { useSelector } from 'react-redux';
 // import { State } from '../types/redux/state';
@@ -261,14 +260,14 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 				}
 
 				{/* We can't export compare data or map data */}
-				{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
+				{/* {this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
 					<div style={divTopPadding}>
 						<ExportComponent />
 					</div>
 				}
 				<div style={divTopPadding}>
 					<ChartLinkContainer />
-				</div>
+				</div> */}
 				{this.props.optionsAdvVisibility && (
 					<div>
 						{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&

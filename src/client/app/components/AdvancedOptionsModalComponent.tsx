@@ -4,7 +4,8 @@
 
 import * as React from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import UIOptionsContainer from '../containers/UIOptionsContainer';
+import AdvOptionsComponent from './/AdvOptionsComponent';
+import HeaderButtonsComponent from './HeaderButtonsComponent';
 import { FormattedMessage } from 'react-intl';
 import ReactTooltip from 'react-tooltip';
 import { useState } from 'react';
@@ -15,7 +16,7 @@ import getPage from '../utils/getPage';
  * @returns Modal element
  */
 export default function AdvancedOptionsModal() {
-	const [showModal, setShowModal] = useState(false);
+	const [showModal, setShowModal] = useState(true);
 	const toggleModal = () => { setShowModal(!showModal); }
 	const inlineStyle: React.CSSProperties = {
 		display: 'inline',
@@ -34,9 +35,10 @@ export default function AdvancedOptionsModal() {
 				</ModalHeader>
 				<ModalBody>
 					<div style={labelStyle}><FormattedMessage id='navigation' /></div>
+					<HeaderButtonsComponent />
 					{/* Only render graph options if on the graph page */}
 					{getPage() === '' &&
-						<UIOptionsContainer />
+						<AdvOptionsComponent />
 					}
 				</ModalBody>
 			</Modal>
