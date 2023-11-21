@@ -77,7 +77,7 @@ export function toggleOptionsVisibility(): t.ToggleOptionsVisibility {
 	return { type: ActionType.ToggleOptionsVisibility };
 }
 
-export function toggleOptionsAdvVisibility(): t.ToggleAdvOptionsVisibility {
+export function toggleAdvOptionsVisibility(): t.ToggleAdvOptionsVisibility {
 	return { type: ActionType.ToggleAdvOptionsVisibility };
 }
 
@@ -292,7 +292,7 @@ export function changeOptionsFromLink(options: LinkOptions) {
 		dispatchSecond.push(toggleOptionsVisibility());
 	}
 	if (options.optionsAdvVisibility != null) {
-		dispatchSecond.push(toggleOptionsAdvVisibility());
+		dispatchSecond.push(toggleAdvOptionsVisibility());
 	}
 	if (options.mapID) {
 		// TODO here and elsewhere should be IfNeeded but need to check that all state updates are done when edit, etc.
