@@ -2,16 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import { State } from '../types/redux/state';
 // import { UnitRepresentType } from '../types/redux/units';
 import ExportComponent from '../components/ExportComponent';
 import ChartLinkContainer from '../containers/ChartLinkContainer';
-import { ToggleAdvOptionsVisibility } from '../types/redux/graph';
+//import { ToggleAdvOptionsVisibility } from '../types/redux/graph';
 import { ChartTypes} from '../types/redux/graph';
-import { Button } from 'reactstrap';
-import TooltipMarkerComponent from './TooltipMarkerComponent';
-import { FormattedMessage } from 'react-intl';
+//import { Button } from 'reactstrap';
+//import TooltipMarkerComponent from './TooltipMarkerComponent';
+//import { FormattedMessage } from 'react-intl';
 //import 'rc-slider/assets/index.css';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 /**
@@ -46,7 +46,7 @@ export default function AdvOptionsComponent() {
 			<div style={divTopPadding}>
 				<ChartLinkContainer />
 			</div>
-			<div style={divTopPadding}>
+			{/* <div style={divTopPadding}>
 				<Button
 					onClick={handleToggleAdvOptionsVisibility}
 					outline
@@ -58,7 +58,7 @@ export default function AdvOptionsComponent() {
 					}
 				</Button>
 				<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
-			</div>
+			</div> */}
 		</div>
 	);
 }
