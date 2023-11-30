@@ -6,21 +6,19 @@ import * as React from 'react';
 import { FormattedMessage, defineMessages, injectIntl, WrappedComponentProps } from 'react-intl';
 import sliderWithoutTooltips, { createSliderWithTooltip } from 'rc-slider';
 import * as moment from 'moment';
-import { Button, ButtonGroup, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-//import ExportComponent from '../components/ExportComponent';
+import { Button, ButtonGroup, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ChartSelectComponent from './ChartSelectComponent';
 import ChartDataSelectComponent from './ChartDataSelectComponent';
 import { ChangeBarStackingAction, ChangeCompareSortingOrderAction, ToggleOptionsVisibility, ToggleAdvOptionsVisibility } from '../types/redux/graph';
-//import ChartLinkContainer from '../containers/ChartLinkContainer';
 import { ChartTypes } from '../types/redux/graph';
 import { ComparePeriod, SortingOrder } from '../utils/calculateCompare';
 import TooltipMarkerComponent from './TooltipMarkerComponent';
 import 'rc-slider/assets/index.css';
 import MapChartSelectComponent from './MapChartSelectComponent';
 import ReactTooltip from 'react-tooltip';
-import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
+import AdvOptionsComponent from './AdvOptionsComponent';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
 
@@ -46,9 +44,11 @@ interface UIOptionsState {
 	barDurationDays: number;
 	showSlider: boolean;
 	compareSortingDropdownOpen: boolean;
+	modalOpen: boolean;
 }
 
 class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptionsState> {
+	toggleModal: () => void;
 	constructor(props: UIOptionsPropsWithIntl) {
 		super(props);
 		this.handleBarDurationChange = this.handleBarDurationChange.bind(this);
@@ -65,8 +65,12 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		this.state = {
 			barDurationDays: this.props.barDuration.asDays(),
 			showSlider: false,
-			compareSortingDropdownOpen: false
+			compareSortingDropdownOpen: false,
+			modalOpen: false
 		};
+		this.toggleModal = () => {
+			this.setState({ modalOpen: !this.state.modalOpen });
+		}
 	}
 
 	public componentDidUpdate(prev: UIOptionsProps) {
@@ -91,7 +95,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 			<div>
 				<ChartSelectComponent />
 				<ChartDataSelectComponent />
-				<GraphicRateMenuComponent />
 				<AreaUnitSelectComponent />
 				{/* Controls error bar, specifically for the line chart. */}
 				{this.props.chartToRender === ChartTypes.line &&
@@ -253,29 +256,19 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 						<MapChartSelectComponent key='chart' />
 					</div>
 				}
-
-				{/* We can't export compare data or map data */}
-				{/* {this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
-					<div style={divTopPadding}>
-						<ExportComponent />
-					</div>
-				}
-				<div style={divTopPadding}>
-					<ChartLinkContainer />
-				</div> */}
 				<div>
 					<div style={divTopPadding}>
-						<Button
-							onClick={this.handleToggleAdvOptionsVisibility}
-							outline
-						>
-							{this.props.optionsAdvVisibility ?
-								<FormattedMessage id='show.adv.options' />
-								:
-								<FormattedMessage id='hide.adv.options' />
-							}
-						</Button>
-						<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.advanced.options' />
+						<Button onClick={this.toggleModal} outline><FormattedMessage id='show.adv.options' /></Button>
+						<TooltipMarkerComponent page='home' helpTextId='help.home.hide.or.show.adv.options' />
+						<Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
+							<ModalHeader toggle={this.toggleModal}><FormattedMessage id='advOptions' /></ModalHeader>
+							<ModalBody>
+								<AdvOptionsComponent />
+							</ModalBody>
+							<ModalFooter>
+								<Button color="primary" onClick={this.toggleModal}><FormattedMessage id='hide.adv.options' /></Button>
+							</ModalFooter>
+						</Modal>
 					</div>
 				</div>
 				<div style={divTopPadding} className='d-none d-lg-block'>
