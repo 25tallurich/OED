@@ -18,7 +18,11 @@ import MapChartSelectComponent from './MapChartSelectComponent';
 import ReactTooltip from 'react-tooltip';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
-import AdvOptionsComponent from './AdvOptionsComponent';
+//import AdvOptionsComponent from './AdvOptionsComponent';
+import ExportComponent from '../components/ExportComponent';
+import ChartLinkContainer from '../containers/ChartLinkContainer';
+//import { ChartTypes } from '../types/redux/graph';
+import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
 
@@ -263,7 +267,15 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 						<Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
 							<ModalHeader toggle={this.toggleModal}><FormattedMessage id='advOptions' /></ModalHeader>
 							<ModalBody>
-								<AdvOptionsComponent />
+								<GraphicRateMenuComponent />
+								{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
+									<div style={divTopPadding}>
+										<ExportComponent />
+									</div>
+								}
+								<div style={divTopPadding}>
+									<ChartLinkContainer />
+								</div>
 							</ModalBody>
 							<ModalFooter>
 								<Button color="primary" onClick={this.toggleModal}><FormattedMessage id='hide.adv.options' /></Button>
