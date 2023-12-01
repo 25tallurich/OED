@@ -6,7 +6,6 @@ import { useSelector} from 'react-redux';
 import { State } from '../types/redux/state';
 import ExportComponent from '../components/ExportComponent';
 import ChartLinkContainer from '../containers/ChartLinkContainer';
-//import { toggleAdvOptionsVisibility } from '../actions/graph';
 import { ChartTypes} from '../types/redux/graph';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 /**
@@ -19,7 +18,7 @@ export default function AdvOptionsComponent() {
 	};
 	const graphState = useSelector((state: State) => state.graph);
 
-	return graphState.optionsAdvVisibility && (
+	return (
 		<div>
 			<GraphicRateMenuComponent />
 			{graphState.chartToRender !== ChartTypes.compare && graphState.chartToRender !== ChartTypes.map &&

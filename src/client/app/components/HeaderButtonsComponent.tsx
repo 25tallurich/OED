@@ -17,7 +17,7 @@ import { State } from '../types/redux/state';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import LanguageSelectorComponent from './LanguageSelectorComponent';
-import { toggleOptionsVisibility, toggleAdvOptionsVisibility } from '../actions/graph';
+import { toggleOptionsVisibility} from '../actions/graph';
 import { BASE_URL } from './TooltipHelpComponent';
 
 /**
@@ -71,7 +71,6 @@ export default function HeaderButtonsComponent() {
 	const unsavedChangesState = useSelector((state: State) => state.unsavedWarning.hasUnsavedChanges);
 	// whether to collapse options when on graphs page
 	const optionsVisibility = useSelector((state: State) => state.graph.optionsVisibility);
-	const optionsAdvVisibility = useSelector((state: State) => state.graph.optionsAdvVisibility);
 	// OED version is needed for help redirect
 	const version = useSelector((state: State) => state.version.version);
 	const HELP_URL = BASE_URL + version;
@@ -233,11 +232,6 @@ export default function HeaderButtonsComponent() {
 								style={state.showOptionsStyle}
 								onClick={() => dispatch(toggleOptionsVisibility())}>
 								<FormattedMessage id={optionsVisibility ? 'hide.options' : 'show.options'} />
-							</DropdownItem>
-							<DropdownItem
-								style={state.showOptionsStyle}
-								onClick={() => dispatch(toggleAdvOptionsVisibility())}>
-								<FormattedMessage id={optionsAdvVisibility ? 'show.adv.options' : 'hide.adv.options'} />
 							</DropdownItem>
 							<DropdownItem divider />
 							<DropdownItem

@@ -48,13 +48,11 @@ export enum ActionType {
 	ChangeSliderRange = 'CHANGE_SLIDER_RANGE',
 	ResetRangeSliderStack = 'RESET_RANGE_SLIDER_STACK',
 	ToggleOptionsVisibility = 'TOGGLE_OPTIONS_VISIBILITY',
-	ToggleAdvOptionsVisibility = 'TOGGLE_OPTIONS_ADV_VISIBILITY',
 	UpdateComparePeriod = 'UPDATE_COMPARE_PERIOD',
 	ChangeCompareSortingOrder = 'CHANGE_COMPARE_SORTING_ORDER',
 	SetHotlinked = 'SET_HOTLINKED',
 	UpdateLineGraphRate = 'UPDATE_LINE_GRAPH_RATE',
 	ConfirmGraphRenderOnce = 'CONFIRM_GRAPH_RENDER_ONCE',
-
 	RequestGroupsDetails = 'REQUEST_GROUPS_DETAILS',
 	ReceiveGroupsDetails = 'RECEIVE_GROUPS_DETAILS',
 	RequestGroupChildren = 'REQUEST_GROUP_CHILDREN',

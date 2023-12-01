@@ -99,10 +99,6 @@ export interface ToggleOptionsVisibility {
 	type: ActionType.ToggleOptionsVisibility;
 }
 
-export interface ToggleAdvOptionsVisibility {
-	type: ActionType.ToggleAdvOptionsVisibility;
-}
-
 export interface UpdateLineGraphRate {
 	type: ActionType.UpdateLineGraphRate;
 	lineGraphRate: LineGraphRate;
@@ -129,7 +125,6 @@ export type GraphAction =
 	| SetHotlinked
 	| ChangeCompareSortingOrderAction
 	| ToggleOptionsVisibility
-	| ToggleAdvOptionsVisibility
 	| UpdateLineGraphRate
 	| ConfirmGraphRenderOnce;
 
@@ -154,7 +149,6 @@ export interface GraphState {
 	barStacking: boolean;
 	hotlinked: boolean;
 	optionsVisibility: boolean;
-	optionsAdvVisibility: boolean;
 	lineGraphRate: LineGraphRate;
 	renderOnce: boolean;
 	showMinMax: boolean;

@@ -9,7 +9,7 @@ import * as moment from 'moment';
 import { Button, ButtonGroup, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ChartSelectComponent from './ChartSelectComponent';
 import ChartDataSelectComponent from './ChartDataSelectComponent';
-import { ChangeBarStackingAction, ChangeCompareSortingOrderAction, ToggleOptionsVisibility, ToggleAdvOptionsVisibility } from '../types/redux/graph';
+import { ChangeBarStackingAction, ChangeCompareSortingOrderAction, ToggleOptionsVisibility} from '../types/redux/graph';
 import { ChartTypes } from '../types/redux/graph';
 import { ComparePeriod, SortingOrder } from '../utils/calculateCompare';
 import TooltipMarkerComponent from './TooltipMarkerComponent';
@@ -18,11 +18,7 @@ import MapChartSelectComponent from './MapChartSelectComponent';
 import ReactTooltip from 'react-tooltip';
 import AreaUnitSelectComponent from './AreaUnitSelectComponent';
 import ErrorBarComponent from './ErrorBarComponent';
-//import AdvOptionsComponent from './AdvOptionsComponent';
-import ExportComponent from '../components/ExportComponent';
-import ChartLinkContainer from '../containers/ChartLinkContainer';
-//import { ChartTypes } from '../types/redux/graph';
-import GraphicRateMenuComponent from './GraphicRateMenuComponent';
+import AdvOptionsComponent from './AdvOptionsComponent';
 
 const Slider = createSliderWithTooltip(sliderWithoutTooltips);
 
@@ -37,7 +33,6 @@ export interface UIOptionsProps {
 	changeDuration(duration: moment.Duration): Promise<any>;
 	changeBarStacking(): ChangeBarStackingAction;
 	toggleOptionsVisibility(): ToggleOptionsVisibility;
-	toggleAdvOptionsVisibility(): ToggleAdvOptionsVisibility;
 	changeCompareGraph(comparePeriod: ComparePeriod): Promise<any>;
 	changeCompareSortingOrder(compareSortingOrder: SortingOrder): ChangeCompareSortingOrderAction;
 }
@@ -63,7 +58,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		this.handleCompareButton = this.handleCompareButton.bind(this);
 		this.handleSortingButton = this.handleSortingButton.bind(this);
 		this.handleToggleOptionsVisibility = this.handleToggleOptionsVisibility.bind(this);
-		this.handleToggleAdvOptionsVisibility = this.handleToggleAdvOptionsVisibility.bind(this);
 		this.toggleSlider = this.toggleSlider.bind(this);
 		this.toggleDropdown = this.toggleDropdown.bind(this);
 		this.state = {
@@ -267,15 +261,7 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 						<Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
 							<ModalHeader toggle={this.toggleModal}><FormattedMessage id='advOptions' /></ModalHeader>
 							<ModalBody>
-								<GraphicRateMenuComponent />
-								{this.props.chartToRender !== ChartTypes.compare && this.props.chartToRender !== ChartTypes.map &&
-									<div style={divTopPadding}>
-										<ExportComponent />
-									</div>
-								}
-								<div style={divTopPadding}>
-									<ChartLinkContainer />
-								</div>
+								<AdvOptionsComponent />
 							</ModalBody>
 							<ModalFooter>
 								<Button color="primary" onClick={this.toggleModal}><FormattedMessage id='hide.adv.options' /></Button>
@@ -331,11 +317,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 
 	private handleToggleOptionsVisibility() {
 		this.props.toggleOptionsVisibility();
-	}
-
-	private handleToggleAdvOptionsVisibility() {
-		// Toggle the modal visibility state
-		this.props.toggleAdvOptionsVisibility();
 	}
 
 	private toggleSlider() {

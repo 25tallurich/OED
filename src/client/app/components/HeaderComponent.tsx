@@ -6,7 +6,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import LogoComponent from './LogoComponent';
 import MenuModalComponent from './MenuModalComponent';
-import AdvancedOptionsModal from './AdvancedOptionsModalComponent';
 import HeaderButtonsComponent from './HeaderButtonsComponent';
 import { useSelector } from 'react-redux';
 import { State } from '../types/redux/state';
@@ -19,7 +18,6 @@ import getPage from '../utils/getPage';
 export default function HeaderComponent() {
 	const siteTitle = useSelector((state: State) => state.admin.displayTitle);
 	const showOptions = useSelector((state: State) => state.graph.optionsVisibility);
-	//const showAdvOptions = useSelector((state: State) => state.graph.optionsAdvVisibility);
 
 	const divStyle = {
 		marginTop: '5px',
@@ -55,9 +53,6 @@ export default function HeaderComponent() {
 				<div className='col-4 justify-content-end d-lg-none d-flex'>
 					<MenuModalComponent />
 				</div>
-				<div className='col-4 justify-content-end d-lg-none d-flex'>
-					<AdvancedOptionsModal/>
-				</div>
 				<div className='col-4 justify-content-end d-lg-flex d-none'>
 					{/* collapse menu if optionsVisibility is false */}
 					{getPage() === '' && !showOptions ?
@@ -65,14 +60,6 @@ export default function HeaderComponent() {
 						<HeaderButtonsComponent />
 					}
 				</div>
-				{/* <div className='col-4 justify-content-end d-lg-flex d-none'>
-					{/* collapse menu if optionsVisibility is false
-					<AdvancedOptionsModal/>
-					{getPage() === '' && !showAdvOptions ?
-						<AdvancedOptionsModal /> :
-						<HeaderButtonsComponent />
-					}
-				</div> */}
 			</div>
 		</div>
 	);
