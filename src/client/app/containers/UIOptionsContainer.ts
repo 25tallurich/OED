@@ -11,7 +11,7 @@ import {
 	changeCompareGraph,
 	changeCompareSortingOrder,
 	toggleOptionsVisibility,
-	toggleOptionsAdvVisibility
+	toggleAdvOptionsVisibility
 } from '../actions/graph';
 import { Dispatch } from '../types/redux/actions';
 import { State } from '../types/redux/state';
@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
 		changeCompareGraph: (comparePeriod: ComparePeriod) => dispatch(changeCompareGraph(comparePeriod)),
 		changeCompareSortingOrder: (sortingOrder: SortingOrder) => dispatch(changeCompareSortingOrder(sortingOrder)),
 		toggleOptionsVisibility: () => dispatch(toggleOptionsVisibility()),
-		toggleAdvOptionsVisibility: () => dispatch(toggleOptionsAdvVisibility())
+		toggleAdvOptionsVisibility: () => dispatch(toggleAdvOptionsVisibility())
 	};
 }
 

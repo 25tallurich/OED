@@ -17,7 +17,7 @@ import { State } from '../types/redux/state';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import LanguageSelectorComponent from './LanguageSelectorComponent';
-import { toggleOptionsVisibility, toggleOptionsAdvVisibility } from '../actions/graph';
+import { toggleOptionsVisibility, toggleAdvOptionsVisibility } from '../actions/graph';
 import { BASE_URL } from './TooltipHelpComponent';
 
 /**
@@ -236,7 +236,7 @@ export default function HeaderButtonsComponent() {
 							</DropdownItem>
 							<DropdownItem
 								style={state.showOptionsStyle}
-								onClick={() => dispatch(toggleOptionsAdvVisibility())}>
+								onClick={() => dispatch(toggleAdvOptionsVisibility())}>
 								<FormattedMessage id={optionsAdvVisibility ? 'show.adv.options' : 'hide.adv.options'} />
 							</DropdownItem>
 							<DropdownItem divider />

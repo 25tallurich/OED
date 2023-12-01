@@ -6,10 +6,11 @@ import { useSelector} from 'react-redux';
 import { State } from '../types/redux/state';
 import ExportComponent from '../components/ExportComponent';
 import ChartLinkContainer from '../containers/ChartLinkContainer';
+import { toggleAdvOptionsVisibility } from '../actions/graph';
 import { ChartTypes} from '../types/redux/graph';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 /**
- * React Component that creates the Advanced Options Visablility
+ * React Component that creates the Advanced Options Visibility
  * @returns Advanced Options element
  */
 export default function AdvOptionsComponent() {
