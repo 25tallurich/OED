@@ -29,7 +29,6 @@ export interface UIOptionsProps {
 	comparePeriod: ComparePeriod;
 	compareSortingOrder: SortingOrder;
 	optionsVisibility: boolean;
-	optionsAdvVisibility: boolean;
 	changeDuration(duration: moment.Duration): Promise<any>;
 	changeBarStacking(): ChangeBarStackingAction;
 	toggleOptionsVisibility(): ToggleOptionsVisibility;

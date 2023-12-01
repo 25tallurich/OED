@@ -12,6 +12,7 @@ import translate from '../utils/translate';
 import { updateLineGraphRate } from '../actions/graph'
 import { LineGraphRate, LineGraphRates } from '../types/redux/graph';
 import TooltipMarkerComponent from './TooltipMarkerComponent';
+import TooltipHelpContainer from '../containers/TooltipHelpContainer';
 import { UnitRepresentType } from '../types/redux/units'
 
 /**
@@ -65,10 +66,11 @@ export default function GraphicRateMenuComponent() {
 			{
 				shouldRender &&
 				<div>
-					<p style={labelStyle}>
+					<div style={labelStyle}>
 						<FormattedMessage id='rate' />:
-						<TooltipMarkerComponent page='home' helpTextId='help.home.select.rates' />
-					</p>
+						<TooltipHelpContainer page='home-modal' />
+						<TooltipMarkerComponent page='home-modal' helpTextId='help.home.select.rates' />
+					</div>
 					{ /* On change update the line graph rate in the store after a null check */}
 					<Select
 						options={rateOptions}

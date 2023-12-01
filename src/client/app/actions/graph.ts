@@ -221,7 +221,6 @@ export interface LinkOptions {
 	comparePeriod?: ComparePeriod;
 	compareSortingOrder?: SortingOrder;
 	optionsVisibility?: boolean;
-	optionsAdvVisibility?: boolean;
 	mapID?: number;
 }
 

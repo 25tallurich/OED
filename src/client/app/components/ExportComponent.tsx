@@ -9,6 +9,7 @@ import graphExport, { downloadRawCSV } from '../utils/exportData';
 import { FormattedMessage } from 'react-intl';
 import { metersApi } from '../utils/api'
 import TooltipMarkerComponent from './TooltipMarkerComponent';
+import TooltipHelpContainer from '../containers/TooltipHelpContainer';
 import { State } from '../types/redux/state';
 import { useSelector } from 'react-redux';
 import { hasToken } from '../utils/token';
@@ -316,7 +317,8 @@ export default function ExportComponent() {
 				<Button color='secondary' outline onClick={exportGraphReading}>
 					<FormattedMessage id='export.graph.data' />
 				</Button>
-				<TooltipMarkerComponent page='home' helpTextId='help.home.export.graph.data' />
+				<TooltipHelpContainer page='home-modal' />
+				<TooltipMarkerComponent page='home-modal' helpTextId='help.home.export.graph.data' />
 			</div>
 			{/* Only raw export if a line graph */}
 			{graphState.chartToRender === 'line' ? <div style={{ paddingTop: '10px' }}>

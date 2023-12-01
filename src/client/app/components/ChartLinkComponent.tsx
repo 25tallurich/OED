@@ -8,6 +8,8 @@ import { Button } from 'reactstrap';
 import {ChartTypes} from '../types/redux/graph';
 import {getRangeSliderInterval} from './DashboardComponent';
 import TooltipMarkerComponent from './TooltipMarkerComponent';
+import TooltipHelpContainer from '../containers/TooltipHelpContainer';
+
 
 interface ChartLinkProps {
 	linkText: string;
@@ -53,7 +55,8 @@ export default class ChartLinkComponent extends React.Component<ChartLinkProps, 
 				<Button	outline	onClick={this.toggleLink}>
 					<FormattedMessage id='toggle.link' />
 				</Button>
-				<TooltipMarkerComponent page='home' helpTextId='help.home.toggle.chart.link'/>
+				<TooltipHelpContainer page='home-modal' />
+				<TooltipMarkerComponent page='home-modal' helpTextId='help.home.toggle.chart.link'/>
 				{this.state.showLink &&
 					<>
 						<div className='checkbox'>
