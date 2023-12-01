@@ -6,7 +6,7 @@ import { useSelector} from 'react-redux';
 import { State } from '../types/redux/state';
 import ExportComponent from '../components/ExportComponent';
 import ChartLinkContainer from '../containers/ChartLinkContainer';
-import { toggleAdvOptionsVisibility } from '../actions/graph';
+//import { toggleAdvOptionsVisibility } from '../actions/graph';
 import { ChartTypes} from '../types/redux/graph';
 import GraphicRateMenuComponent from './GraphicRateMenuComponent';
 /**
